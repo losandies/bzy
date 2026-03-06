@@ -16,7 +16,6 @@ export async function GET() {
   return Response.json(user);
 }
 
-// POST /api/user -> upserts (creates/updates) the current user in your DB
 export async function POST() {
   const { userId } = await auth();
 
@@ -24,7 +23,6 @@ export async function POST() {
     return new Response('Unauthorized', { status: 401 });
   }
 
-  // Pull user profile from Clerk
   const client = await clerkClient();
   const clerkUser = await client.users.getUser(userId);
 
@@ -46,7 +44,6 @@ export async function POST() {
       email,
       firstName,
       lastName,
-      // role defaults to CLIENT in your schema
     },
   });
 

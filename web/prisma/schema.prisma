@@ -23,12 +23,13 @@ model User {
 }
 
 model ProviderProfile {
-    id          String   @id @default(cuid())
-    userId      String   @unique
+    id          String    @id @default(cuid())
+    userId      String    @unique
     displayName String
+    specialty   Specialty
     city        String?
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
 
     user     User      @relation(fields: [userId], references: [id])
     services Service[]
@@ -36,13 +37,16 @@ model ProviderProfile {
 }
 
 model Service {
-    id          String   @id @default(cuid())
-    providerId  String
-    name        String
-    priceCents  Int
-    durationMin Int
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    id            String   @id @default(cuid())
+    providerId    String
+    name          String
+    priceCents    Int
+    durationMin   Int
+    depositNeeded Boolean  @default(false)
+    depositCost   Int?
+    displayPhoto  String?
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
 
     provider ProviderProfile @relation(fields: [providerId], references: [id])
     bookings Booking[]
@@ -72,8 +76,18 @@ enum Role {
     ADMIN
 }
 
+enum Specialty {
+    HAIRSTYLIST
+    BARBER
+    NAIL_TECHNICIAN
+    ESTHETICIAN
+    MASSAGE_THERAPIST
+    PHOTOGRAPHER
+}
+
 enum BookingStatus {
     PENDING
     CONFIRMED
     CANCELED
+    COMPLETED
 }
