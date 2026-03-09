@@ -26,11 +26,11 @@ export function SocialAuthButton({ platform }: SocialAuthButtonProps) {
 
   return (
     <button
-      className={`mb-2 flex h-10 w-80 cursor-pointer items-center rounded-sm border px-4 shadow-lg ${platform === 'apple' ? 'bg-black text-white' : platform === 'facebook' ? 'bg-[#3b5998] text-white' : 'bg-white'}`}
+      className={`mb-2 flex h-10 w-full cursor-pointer items-center rounded-md border px-4 ${platform === 'apple' ? 'bg-black text-white' : platform === 'facebook' ? 'bg-[#3b5998] text-white' : 'bg-white'}`}
     >
-      <div className="flex w-full justify-center items-center">
-        <Icon className="text-2xl mr-3" />
-        <p className="font-medium">{label}</p>
+      <div className="flex w-full items-center justify-center">
+        <Icon className="mr-3 text-2xl" />
+        <p className="text-sm font-medium">{label}</p>
       </div>
     </button>
   );

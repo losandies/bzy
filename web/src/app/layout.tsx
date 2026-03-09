@@ -45,18 +45,20 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      appearance={{ cssLayerName: 'clerk' }}
-      signInUrl="/sign-in"
-      signUpUrl="/sign-up"
-      signInFallbackRedirectUrl="/dashboard"
-      signUpFallbackRedirectUrl="/dashboard"
-      afterSignOutUrl="/"
-    >
-      <html lang="en">
-        <Navbar />
-        <body>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body>
+        <ClerkProvider
+          appearance={{ cssLayerName: 'clerk' }}
+          signInUrl="/sign-in"
+          signUpUrl="/sign-up"
+          signInFallbackRedirectUrl="/dashboard"
+          signUpFallbackRedirectUrl="/dashboard"
+          afterSignOutUrl="/"
+        >
+          <Navbar />
+          {children}
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }

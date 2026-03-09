@@ -1,4 +1,5 @@
 /* eslint-disable style/operator-linebreak */
+import { Role } from 'generated/prisma/enums';
 import { headers } from 'next/headers';
 import { Webhook } from 'svix';
 import { prisma } from '@/lib/prisma';
@@ -56,10 +57,14 @@ export async function POST(req: Request) {
       const firstName = data.first_name ?? null;
       const lastName = data.last_name ?? null;
 
+      const clerkRole = data.unsafe_metadata?.role;
+
+      const role = clerkRole === 'provider' ? Role.PROVIDER : Role.CLIENT;
+
       await prisma.user.upsert({
         where: { clerkId },
-        update: { email, firstName, lastName },
-        create: { clerkId, email, firstName, lastName },
+        update: { email, firstName, lastName, role },
+        create: { clerkId, email, firstName, lastName, role },
       });
 
       return new Response('User synced', { status: 200 });

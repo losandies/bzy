@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { AuthModal } from '../auth/AuthModal';
 import { Logo } from '../media/Logo';
 import { Button } from './button';
+import { SignOutButton } from '@clerk/nextjs';
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -38,7 +39,9 @@ export const Navbar = () => {
           >
             Sign Up
           </Button>
-          <Button className="h-12">Get Started</Button>
+          <SignOutButton>
+            <Button className="h-12">Sign Out</Button>
+          </SignOutButton>
         </div>
 
         <AuthModal open={open} openOnChange={setOpen} />

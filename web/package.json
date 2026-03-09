@@ -5,7 +5,6 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev:spotlight": "npx @spotlightjs/spotlight",
     "dev:next": "next dev",
     "dev": "run-p dev:next",
     "build:next": "next build --webpack",
@@ -41,6 +40,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.3.1",
+    "input-otp": "^1.4.2",
     "lucide-react": "^0.575.0",
     "next": "^16.1.6",
     "next-intl": "^4.8.2",
@@ -68,7 +68,6 @@
     "@next/bundle-analyzer": "^16.1.6",
     "@next/eslint-plugin-next": "^16.1.6",
     "@playwright/test": "^1.58.1",
-    "@spotlightjs/spotlight": "^4.10.0",
     "@storybook/addon-a11y": "^10.2.4",
     "@storybook/addon-docs": "^10.2.4",
     "@storybook/addon-vitest": "^10.2.4",
